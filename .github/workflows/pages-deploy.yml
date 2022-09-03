@@ -9,7 +9,7 @@ on:
       - LICENSE
 
 jobs:
-  continuous-delivery:
+  pages-deploy:
 
     runs-on: ubuntu-latest
 
