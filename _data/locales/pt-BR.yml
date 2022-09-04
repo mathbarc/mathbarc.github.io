@@ -75,5 +75,7 @@ post:
 
 # categories page
 categories:
-  category_measure: categorias
+  category_measure: 
+    singular: categoria
+    plural: categorias
   post_measure: posts
