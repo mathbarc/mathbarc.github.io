@@ -107,7 +107,7 @@ NiViewer2
 
 The execution of the above command is expected to look like the following image:
 
-![NiViewer Example]({{site.baseurl}}/kinect_v2_com_opencv/niviewer2.png "Tela NiViewer")
+![NiViewer Example]({{site.baseurl}}/kinect_v2_com_opencv/niviewer2.png "NiViewer Example")
 
 
 ```
