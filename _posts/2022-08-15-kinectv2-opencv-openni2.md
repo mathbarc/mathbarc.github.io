@@ -9,9 +9,9 @@ pin: false
 
 # What is Kinect?
 
-Kinect is a moviment sensor develop for use on Xbox 360 and Xbox One by Prime Sense in a colaboration with Microsoft. The device contains microphones, RGB cameras, infrared emissors and a monocromátic CMOS sensor for sampling infrared. By calibrating the infrared emissor and CMOS sensor it is possible to obtain depth maps and reconstruct the scene.
+Kinect is a movement sensor developed for use on Xbox 360 and Xbox One by Prime Sense in a collaboration with Microsoft. The device contains microphones, RGB cameras, infrared emissors and a monocromátic CMOS sensor for sampling infrared. By calibrating the infrared emissor and CMOS sensor it is possible to obtain depth maps and reconstruct the scene.
 
-The device was created as a natural interface for users to interact with video games without the need for fisical controllers. It is capable to detect pose of up to 4 people simultaneously.
+The device was created as a natural interface for users to interact with video games without the need for physical controllers. It is capable to detect pose of up to 4 people simultaneously.
 
 In this article are the steps necessary to access Kinect data using OpenCV on Linux.
 
@@ -23,20 +23,20 @@ In this article are the steps necessary to access Kinect data using OpenCV on Li
 
 # Dependencies
 
-During wrinting of this article, two operational systems were used: Ubuntu 20.04 and Ubuntu 22.04 and because of that it will be shown the APT commands used to install pre-compiled libraries. For users of other OS it will be show compilation steps for the dependencies.
+During the wrinting of this article, two operational systems were used: Ubuntu 20.04 and Ubuntu 22.04 and because of that it will be shown the APT commands used to install pre-compiled libraries. For users of other OS it will be show compilation steps for the dependencies.
 
 ## OpenNI
 
-OpenNI (Open Natural Interaction) is a Open Source project that aims to improve standarization of natural user interfaces. It provides a API that incapsulates hardware details and facilitates integration with applications.
+OpenNI (Open Natural Interaction) is an Open Source project that aims to improve standardization of natural user interfaces. It provides an API that encapsulates hardware details and facilitates integration with applications.
 
-This library was mainly mantained by PrimeSense, but it's original repository was discontinued when the company was bought by Apple in 2013. Since then old partners and employees from PrimeSense made a fork from OpenNI 2 which is currently mantained by StructureIO.
+This library was mainly maintained by PrimeSense, but its original repository was discontinued when the company was bought by Apple in 2013. Since then old partners and employees from PrimeSense made a fork from OpenNI 2 which is currently maintained by StructureIO.
 
 - Repo: [https://github.com/structureio/OpenNI2](https://github.com/structureio/OpenNI2)
 - APT Commmand: ```apt install libopenni2-dev openni2-utils```
 
 ## OpenCV
 
-OpenCV (Open Computer Vision) is a Open Source library that reunites computer vision algorithms on diferent areas: image processing, 3D reconstruction, optimization, clustering, tracking, descriptors, matching, object recognition and deep learning. It has support for multiple programming languages like: C++, python, java e MATLAB.
+OpenCV (Open Computer Vision) is an Open Source library that reunites computer vision algorithms on different areas: image processing, 3D reconstruction, optimization, clustering, tracking, descriptors, matching, object recognition and deep learning. It has support for multiple programming languages like: C++, python, java e MATLAB.
 
  - Repo: [https://github.com/opencv/opencv](https://github.com/opencv/opencv)
  - APT Commmand: ```apt install libopencv-dev```
@@ -60,16 +60,16 @@ sudo make install
 
 ## PCL
 
-A PCL (Point Clout Library) é uma biblioteca escrita em C++ especializada no processamento de núvens de pontos. Esta biblioteca possuí algoritmos para filtro, seleção de pontos chave, reconstrução de superfícies, comunicação com sensores, visualização de núvens de pontos e outros tópicos.
+PCL (Point Clout Library) is a C++ library specialized in processing point clouds. It provides implementations of filters, key point selection, surface reconstruction, sensor communication and visualization.
 
  - Repositório: [https://github.com/PointCloudLibrary/pcl](https://github.com/PointCloudLibrary/pcl)
  - Comando APT: ```apt install libpcl-dev```
 
 # Making it work
 
-As bibliotecas descritas na sessão anterior serão nossas interfaces de programação em um nível mais elevado, para que possamos extrair os dados do sensor primeiro é necessário um driver que gerenciará a comunicação entre o sistema operacional e kinect. Como os drivers oficiais do kinect são proprietários e apenas disponíveis na Kinect SDK para o windows, a comunidade inicio a criação de um drive para o linux: o freenect, desenvolvido para a primeira versão do kinect, e freenect2, desenvolvido para a segunda versão do kinect.
+The libraries in the last session allow high level programming that provides functions to recover and reconstruct 3D data. However, to make them work we firstly need to compile a driver that manages communication between OS and Kinect. To do so it is possible to utilize the project libfreenect, an open source Kinect driver developed mostly for linux but capable of being compiled on windows.
 
-Neste artigo concentraremos no freenect2 pois estamos trabalhando com o Kinect v2. Nas seguintes sessões compilaremos o projeto [LibFreenect2](https://github.com/OpenKinect/libfreenect2) e configuraremos seu uso.
+As the main focus of this article is to utilize the Kinect version 2, on this session the steps necessary to compile and configure the [LibFreenect2](https://github.com/OpenKinect/libfreenect2) are shown.
 
 ## Compiling libfreenect2
 
@@ -87,27 +87,27 @@ sudo make install-openni2
 
 ## Allow access to device
 
-Após compilar o projeto e instalar os artefatos, é necessário liberar o acesso ao dispositivo para os usuários, do contrário os programas que tentarem se comunicar com o kinect precisarão ser executados em modo root.
+After compilation and installation of the project, it is necessary to grant users access to Kinect device, otherwise root permission will be needed to capture data from the sensor. It can be done by executing the following commands:
 
 ```bash
 cd libfreenect2
 sudo cp ./platform/linux/udev/90-kinect2.rules /etc/udev/rules.d/
 ```
 
-**Após a execução dos comandos acima é necessário desconectar o kinect da porta USB e conectar novamente.**
+**It is necessary to disconnect the Kinect sensor from the USB port and reconnect again for changes to take place.**
 
 ## Testing with NiViewer2
 
-Como primeiro teste rápido é possivel utilizar agora o NiViewer2 para obter dados do kinect.
+After following the steps above the command NiViewer2 can be used to check if the environment is correct configurated:
 
 ```bash
 sudo apt install openni2-utils # caso não tenha sido instalado ainda
 NiViewer2
 ```
 
-Após a execução dos comandos acima são esperados uma tela conforme a image e a seguinte saída no terminal:
+The execution of the above command is expected to look like the following image:
 
-![Tela NiViewer]({{site.baseurl}}/kinect_v2_com_opencv/niviewer2.png "Tela NiViewer")
+![NiViewer Example]({{site.baseurl}}/kinect_v2_com_opencv/niviewer2.png "Tela NiViewer")
 
 
 ```
@@ -129,7 +129,7 @@ Após a execução dos comandos acima são esperados uma tela conforme a image e
 
 # Program Sample
 
-Feito o teste com o NiView2, a seguir está um programa em C++ utilizando a PCL e OpenCV para obter informação do sensor e exibir a núvem de pontos em uma tela interativa. Ao final está contido o vídeo com o resultado esperado ao se compilar o programa abaixo.
+If the environment is correct configured, on this section is provided a sample code using OpenCV to capture data from sensor and PCL to visualize the point cloud. After compiling and executing the program it is expected a view like the video of the last session.
 
 ## Source Code
 
@@ -166,37 +166,37 @@ target_link_libraries(openni-capture ${OpenCV_LIBS} ${PCL_LIBRARIES})
 
 #include <fstream>
 
-cv::VideoCapture cap(1, cv::CAP_OPENNI2); // Configura o cv::VideoCapture para abrir o dispositivo 1 utilizando a OpenNI2
+cv::VideoCapture cap(1, cv::CAP_OPENNI2); // Configures cv::VideoCapture to open device 1 using OpenNI2
 
 void getPointCloud(pcl::visualization::PCLVisualizer& viewer)
 {
-    viewer.removeAllPointClouds(); // Remove as núvens de pontos anteriores
+    viewer.removeAllPointClouds(); // Cleans previous point cloud on view
 
     cv::Mat pointCloudFrame, frame;
 
-    cap.grab(); // Obtém-se uma leitura do sensor
-    cap.retrieve(pointCloudFrame, cv::CAP_OPENNI_POINT_CLOUD_MAP); // Obtendo núvem de pontos em formato matricial
-    cap.retrieve(frame, cv::CAP_OPENNI_BGR_IMAGE); // Obtendo informação de cor alinhada com a núvem de pontos
+    cap.grab(); // Grabs a sensor reading
+    cap.retrieve(pointCloudFrame, cv::CAP_OPENNI_POINT_CLOUD_MAP); // Recovers point cloud on matrix format from sensor data
+    cap.retrieve(frame, cv::CAP_OPENNI_BGR_IMAGE); // Obtains color information aligned with point cloud
 
     pcl::visualization::CloudViewer::ColorCloud* cloud = new pcl::visualization::CloudViewer::ColorCloud();
 
-    for(int i = 0; i<pointCloudFrame.rows; i++) // Para cada ponto contido na matriz
+    for(int i = 0; i<pointCloudFrame.rows; i++) // For each point on the matrix
     {
-        for(int j = 0; j<pointCloudFrame.cols; j++) // Para cada ponto contido na matriz
+        for(int j = 0; j<pointCloudFrame.cols; j++) // For each point on the matrix
         {
-            cv::Vec3b color = frame.at<cv::Vec3b>(i,j); // Obtém a informação de cor
-            pcl::PointXYZRGB point(color[2], color[1], color[0]); // Cria um ponto no formato da PCL passando a informação da cor contida nesse ponto
+            cv::Vec3b color = frame.at<cv::Vec3b>(i,j); // Gets point color 
+            pcl::PointXYZRGB point(color[2], color[1], color[0]); // Creates a PCL point containing color
 
-            cv::Vec3f coords = pointCloudFrame.at<cv::Vec3f>(i,j); // Obtém as coordenadas deste ponto
-            point.x = coords[0]; // Adiciona a coordenada ao ponto
-            point.y = coords[1]; // Adiciona a coordenada ao ponto
-            point.z = coords[2]; // Adiciona a coordenada ao ponto
+            cv::Vec3f coords = pointCloudFrame.at<cv::Vec3f>(i,j); // Gets X,Y,Z position of point
+            point.x = coords[0]; // Sets coodinate on point
+            point.y = coords[1]; // Sets coodinate on point
+            point.z = coords[2]; // Sets coodinate on point
 
-            cloud->push_back(point); // Adiciona o ponto na núvem
+            cloud->push_back(point); // Adds point on point cloud
         }
     }
 
-    viewer.addPointCloud(pcl::visualization::CloudViewer::ColorCloud::ConstPtr(cloud)); // Envia a núvem de pontos para ser renderizada pelo visualizador
+    viewer.addPointCloud(pcl::visualization::CloudViewer::ColorCloud::ConstPtr(cloud)); // Sends a point cloud to be rendered on screen
 }
 
 
@@ -206,15 +206,14 @@ int main(int argc, char** argv)
     if(!cap.isOpened())
        return -1;
 
-    cap.set(cv::CAP_OPENNI_DEPTH_GENERATOR_REGISTRATION, 1); // Configurando OpenNI para gerar núvem de pontos com informações de cores
+    cap.set(cv::CAP_OPENNI_DEPTH_GENERATOR_REGISTRATION, 1); // Configures OpenNI to generate point clouds with color information
 
+    pcl::visualization::CloudViewer viewer("point cloud"); // Initializes a Point Cloud Viewer interface
+    viewer.runOnVisualizationThread(getPointCloud); // Defines callback function to render scene
 
-    pcl::visualization::CloudViewer viewer("point cloud"); // Inicializa um visualizador de núvens de pontos
-    viewer.runOnVisualizationThread(getPointCloud); // Define a função utilizada para renderizar a cena
+    while(!viewer.wasStopped()); // Waits for window closure
 
-    while(!viewer.wasStopped()); // Aguarda a conclusão do visualizador de núvens de pontos
-
-    cap.release(); // Encerra a captura do dispositivo
+    cap.release(); // Closes communication with device
     
     return 0;
 
@@ -228,7 +227,7 @@ int main(int argc, char** argv)
 
 <div>
 <h3>
-<p>In case of any doubts send me a <a href="mailto:matheusbarcelosoliveira@gmail.com">email</a>,</p>
+<p>In case of any doubts or ideas send me a <a href="mailto:matheusbarcelosoliveira@gmail.com">email</a>,</p>
 <p><a href="https://github.com/mathbarc">Matheus Barcelos de Oliveira</a><br/>
 Computer Engineer</p>
 </h3>
