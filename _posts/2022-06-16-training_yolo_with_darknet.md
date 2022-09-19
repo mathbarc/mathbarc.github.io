@@ -7,6 +7,10 @@ tags: [computer vision, machine learning, convolutional networks]
 pin: false
 ---
 
+<div>
+<img src="{{site.baseurl}}/github.png" width=20px height=20px /> <a href="https://github.com/mathbarc/darknet-demo">mathbarc/darknet-demo</a>
+</div>
+
 # Yolo X Darknet
 
 # Compiling Darknet Framework

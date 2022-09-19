@@ -2,10 +2,15 @@
 title:  "MLOps with MLFlow"
 author: matheus
 date:   2022-06-02 10:00:00 -0300
-categories: [DevOps, MLOps ]
+categories: [DevOps, MLOps]
 tags: [machine learning, devops]
 pin: false
 ---
+
+<div>
+<img src="{{site.baseurl}}/github.png" width=20px height=20px /> <a href="https://github.com/mathbarc/mlops_with_mlflow">mathbarc/mlops_with_mlflow</a>
+</div>
+
 
 # What is MLOps?
 
@@ -33,11 +38,11 @@ These three steps are included as a extension of the development fase but genera
 
 # Using MLFlow
 
-## Services necessary
+## Services Necessary
 
-## Setting up Minio
+### Setting up Minio
 
-## Setting up MLFlow
+### Setting up MLFlow
 
 ## Training a model
 
