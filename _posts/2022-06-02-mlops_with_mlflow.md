@@ -26,7 +26,10 @@ These three steps are included as a extension of the development fase but genera
 
 # Different components of MLOps process
 
+{% include image.html url="/mlops_with_mlflow/mlops_components.png" description="Extracted from: <a href='https://databricks.com/glossary/mlops'>https://databricks.com/glossary/mlops</a>" %}
 
+
+The components of 
 
 # Maturity levels of MLOps processes
 
@@ -54,10 +57,7 @@ These three steps are included as a extension of the development fase but genera
 
 ### Deploying a model
 
-<div>
-<h3>
-<p>In case of any doubts or ideas send me a <a href="mailto:matheusbarcelosoliveira@gmail.com">email</a>,</p>
-<p><a href="https://github.com/mathbarc">Matheus Barcelos de Oliveira</a><br/>
-Computer Engineer</p>
-</h3>
-</div>
+{% include youtube.html url="https://www.youtube.com/embed/G7300HZEiOo" %}
+
+{% include signature.html %}
+
