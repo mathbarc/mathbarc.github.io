@@ -44,7 +44,7 @@ With aim of reducing disparities between code and ML models, the following steps
 {% include image.html url="/mlops_with_mlflow/manual_process.png" description="Extracted from: <a href='https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning
 '>cloud.google.com</a>" %}
 
-The manual process consists in creating each step of a Machine Learning Pipeline through 
+The manual process consists in creating each step of a Machine Learning Pipeline through scripts or notebooks that are manually started after each step of the pipeline. This generally is the first process implemented at the start of a project or in its Proof of Concept phase due to the low difficulty of creation.
 
 Como primeiro pipeline temos aqui o Processo Manual. Nele a análise, preparação, treinamento e validação são todos realizados de forma manual, muitas vezes em scritps separados ou células de um notebook que são chamados manualmente nesta sequência para realizar o pipeline de treinamento de modelos.
 Neste tipo de processo existe uma desconexão entre o time de data science que implementa o modelo e os engenheiros de software que desenvolvem o serviço que utilizará o modelo.
