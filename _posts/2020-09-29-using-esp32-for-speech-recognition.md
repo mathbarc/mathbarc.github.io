@@ -164,15 +164,6 @@ void loop()
 
 After compiling the code on the ESP32 board, we can run the python code provided on this post to begin controlling devices with voice command.
 
-<div style="position:relative;width:100%;padding-bottom:56.25%">
-<iframe style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" src="https://www.youtube.com/embed/SGRybBWM_gc" allowfullscreen></iframe>
-</div>
+{% include youtube.html url="https://www.youtube.com/embed/SGRybBWM_gc" %}
 
-<div>
-<h3>
-<p>In case of any doubts or ideas send me a <a href="mailto:matheusbarcelosoliveira@gmail.com">email</a>,</p>
-<p><a href="https://github.com/mathbarc">Matheus Barcelos de Oliveira</a><br/>
-Computer Engineer</p>
-</h3>
-</div>
-
+{% include signature.html %}

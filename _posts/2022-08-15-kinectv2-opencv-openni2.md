@@ -221,14 +221,8 @@ int main(int argc, char** argv)
 ```
 
 ## Result
-<div style="position:relative;width:100%;padding-bottom:56.25%">
-<iframe style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" src="https://www.youtube.com/embed/199c-im-FOM" allowfullscreen></iframe>
-</div>
 
-<div>
-<h3>
-<p>In case of any doubts or ideas send me a <a href="mailto:matheusbarcelosoliveira@gmail.com">email</a>,</p>
-<p><a href="https://github.com/mathbarc">Matheus Barcelos de Oliveira</a><br/>
-Computer Engineer</p>
-</h3>
-</div>
+{% include youtube.html url="https://www.youtube.com/embed/199c-im-FOM" %}
+
+
+{% include signature.html %}
