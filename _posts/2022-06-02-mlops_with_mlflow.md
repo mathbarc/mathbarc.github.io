@@ -44,7 +44,9 @@ With aim of reducing disparities between code and ML models, the following steps
 {% include image.html url="/mlops_with_mlflow/manual_process.png" description="Extracted from: <a href='https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning
 '>cloud.google.com</a>" %}
 
-The manual process consists in creating each step of a Machine Learning Pipeline through scripts or notebooks that are manually started after each step of the pipeline. This generally is the first process implemented at the start of a project or in its proof of concept phase due to the lower difficulty and cost of implementation. But the main flaw of this process is the cost of mainteinance due to the difficulty of migrating the pipeline to different environment and the difficulty to update the pipeline with new features, this flaw fosters a disparity between the code that goes to production and the models been trained for these software modules.
+The manual process consists in creating each step of a Machine Learning Pipeline through scripts or notebooks that are manually started after each step of the pipeline. This generally is the first process implemented at the start of a project or in its proof of concept phase due to the lower difficulty and cost of implementation. 
+
+The main flaw of this process is the cost of mainteinance due to the difficulty of migrating the pipeline to different environment and the difficulty to update the pipeline with new features, this flaw fosters a disparity between the code that goes to production and the models been trained for these software modules.
 
 ## ML Pipeline Automation
 
@@ -60,20 +62,65 @@ This possibility brings a opportunity: Continuous delivery of models. New improv
 {% include image.html url="/mlops_with_mlflow/automated_cicd_pipeline.png" description="Extracted from: <a href='https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning
 '>cloud.google.com</a>" %}
 
+On this stage there is a automation of tests and packaging of software and models using CI/CD pipelines. In this format both the models and code are tested together after every alteration by the CI workflow and then, if no problems are detected, packaged and delivered to next environments through a CD workflow. This format allows for a increased speed of delivery of new features and fixes and also better quality control. 
 
-
-
-Nesse ultimo estágio, o pipeline automatizado de machine learning possui testes e empacotamento automatizados via CI e entregas nos diversos ambientes do produto automatizados com praticas de CD, diminuindo ainda mais a distância entre o modelo e o contexto no qual ele será utilizado. Nessa fase do produto estamos lidando com equipes maiores, maior complexidade e uma user base maior também.
-
-
+Pipelines of this level are generally used by big teams on projects already with a considerable user base and with higher complexibility.
 
 # Using MLFlow
 
-## Services Necessary
+On this article we will setup the MLFlow service. MLFlow is a open source MLOps tool which allows trackking the evolution of models and also their versioning, allowing control over the models cicle of life. After setting up MLFlow, it will be shown how to train and serve a model using this tool.
 
-### Setting up Minio
+## Setting up the environment
 
-### Setting up MLFlow
+```yaml
+version: "3.7"
+
+services:
+    minio:
+      image: minio/minio
+      environment:
+        - MINIO_CONSOLE_ADDRESS=:9001
+        - MINIO_ROOT_USER=mlops-demo
+        - MINIO_ROOT_PASSWORD=mlops-demo
+      ports:
+        - "9000:9000"
+        - "9001:9001"
+      command:
+        - server
+        - /data
+      volumes:
+        - minio-data:/data
+
+    postgres:
+      image: postgres
+      environment:
+        - POSTGRES_USER=mlops-db
+        - POSTGRES_PASSWORD=mlops-db
+        - POSTGRES_DB=mlops-db
+        - PGDATA=/var/lib/postgresql/data
+      ports:
+        - "5432:5432"
+      volumes:
+        - mlflow-db-data:/var/lib/postgresql/data
+    
+    mlflow:
+      image: ghcr.io/mathbarc/mlflow:master
+      environment:
+        - MLFLOW_S3_ENDPOINT_URL=http://minio:9000/
+        - AWS_ACCESS_KEY_ID=mlops-demo
+        - AWS_SECRET_ACCESS_KEY=mlops-demo
+      command: ["server","--host", "0.0.0.0", "--port", "9002", "--backend-store-uri","postgresql://mlops-db:mlops-db@postgres:5432/mlops-db", "--default-artifact-root","s3://mlops"]
+      ports:
+        - "9002:9002"
+      depends_on:
+        - minio
+        - postgres
+
+volumes:
+  minio-data: 
+  mlflow-db-data:
+
+```
 
 ## Training a model
 
