@@ -1,7 +1,7 @@
 ---
 title:  "Training Yolo Models with Darknet"
 author: matheus
-date:   2022-06-16 10:00:00 -0300
+date:   2023-01-20 10:00:00 -0300
 categories: [Object Detection, Convolutional Networks, Single Shot]
 tags: [computer vision, machine learning, convolutional networks]
 pin: false
