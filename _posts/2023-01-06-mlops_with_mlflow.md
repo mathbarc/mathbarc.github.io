@@ -1,9 +1,9 @@
 ---
 title:  "MLOps with MLFlow"
 author: matheus
-date:   2023-01-06 10:00:00 -0300
+date:   2023-01-02 10:00:00 -0300
 categories: [DevOps, MLOps]
-tags: [machine learning, devops, docker]
+tags: [machine learning, docker]
 pin: false
 ---
 
@@ -127,7 +127,10 @@ After saving the file above to disk with the name docker-compose.yml we can run 
 ```bash
 docker-composer up -d
 ```
+
 ## Training a model
+
+
 
 ### Dataset used
 
