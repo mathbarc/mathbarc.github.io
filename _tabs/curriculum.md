@@ -78,9 +78,7 @@ MSc Pedro Henrique Caetano de Pádua, Ph.D. Flávio Luis Cardeal Pádua, Ph.D. M
 
 # Projects
 
-[Futtracker](https://github.com/piim-lab/futtracker) - Software for trackking soccer players in real time with a single camera view.
-
-[Multiview Futtracker](https://github.com/piim-lab/multiview-futtracker) - Software for trackking soccer players in real time with multiple camera views.
+[Multiview Futtracker](https://github.com/mathbarc/multiview-futtracker) - Software for trackking soccer players in real time with multiple camera views.
 
 [Computer Vision Tools](https://github.com/mathbarc/computer_vision_tools) - Tools for computer vision tasks.
 

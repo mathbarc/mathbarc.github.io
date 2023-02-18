@@ -34,7 +34,8 @@ With aim of reducing disparities between code and ML models, the following steps
 - **Exploratory data analysis:** In this step data scientists analyse the dataset to comprehand the problem and acess the viability of the solution;
 - **Data preparation:** At this point the data is cleaned, organized and annotated;
 - **Model training:** The organized dataset is divided into a training set and test set. Different models are created and trained on the data to extract its patterns and aftwards the test set is used to assure generalization of the models;
-- **Model serving:** When a model reaches the quality standard desired it is moved to production where it will be used to infer new data;
+- **Model governance:** When a model reaches the quality standard desired its performance and files are logged to a governance tool which is responsible to manage the model's versions and life cicle;
+- **Model serving:** Using the governance tool the trained version of the model is selected to go to the operation environment where it will be used to infer new data;
 - **Monitoring:** To garantee that the model keeps making decisions on the same quality desired on the training step, it is necessary to log results data and setup a feedback process from the users of this model. New data that performs badly is separated to integrate the dataset for new model training iterations.
 
 # Maturity levels of MLOps processes
@@ -48,7 +49,7 @@ The manual process consists in creating each step of a Machine Learning Pipeline
 
 The main flaw of this process is the cost of mainteinance due to the difficulty of migrating the pipeline to different environment and the difficulty to update the pipeline with new features, this flaw fosters a disparity between the code that goes to production and the models been trained for these software modules.
 
-## ML Pipeline Automation
+## Pipeline Automation
 
 {% include image.html url="/mlops_with_mlflow/automated_ml_pipeline.png" description="Extracted from: <a href='https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning'>cloud.google.com</a>" %}
 
@@ -56,7 +57,7 @@ This level is generally a progression from the Manual Process when the project r
 
 This possibility brings a opportunity: Continuous delivery of models. New improvements and models can be created, validated and delivered faster and cheaper. 
 
-## ML Pipeline Automation with CI/CD
+## Pipeline Automation with CI/CD
 
 {% include image.html url="/mlops_with_mlflow/automated_cicd_pipeline.png" description="Extracted from: <a href='https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning'>cloud.google.com</a>" %}
 
@@ -70,7 +71,11 @@ On this article we will setup the MLFlow service. MLFlow is a open source MLOps 
 
 ## Setting up the environment
 
-A simple way to configure all the tools needed is to use [Docker](https://docs.docker.com/get-docker/). The following docker-compose.yml file contains the configuration of 3 services: MinIO, Postgres and MLFlow. MinIO is a S3 bucket service that can be used locally to store files as we would on AWS S3. Postgres is a relational database used by MLFlow to store metadata about the models. MLFlow is the service we will comunicate to log metrics and control the model versioning.
+A simple way to configure all the tools needed is to use [Docker](https://docs.docker.com/get-docker/). The following docker-compose.yml file contains the configuration of 3 services: MinIO, Postgres and MLFlow. 
+
+- MinIO is a S3 bucket service that can be used locally to store files as we would on AWS S3; 
+- Postgres is a relational database used by MLFlow to store metadata about the models; 
+- MLFlow is the service we will comunicate to log metrics and control the model versioning.
 
 ```yaml
 version: "3.7"
