@@ -1,9 +1,9 @@
 ---
 title:  "MLOps with MLFlow"
 author: matheus
-date:   2023-01-02 10:00:00 -0300
+date:   2024-01-06 10:00:00 -0300
 categories: [DevOps, MLOps]
-tags: [machine learning, docker]
+tags: [machine learning, docker, mlflow, mlops]
 pin: false
 ---
 

@@ -3,7 +3,7 @@ title:  "Capturing data from Kinect v2 using OpenCV"
 author: matheus
 date:   2022-08-15 10:00:00 -0300
 categories: [3D Reconstruction, LiDAR ]
-tags: [kinect, opencv, pcl, openni, 3d]
+tags: [kinect, opencv, pcl, openni, 3d reconstruction]
 pin: false
 ---
 
