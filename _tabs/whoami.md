@@ -1,16 +1,14 @@
 ---
-title: Curriculum
+title: Who am I?
 icon: fas fa-scroll
 order: 1
 ---
 
-Hello! 
+Hello!
 
-I am a Brazillian 🇧🇷 Computer Engineer from Minas Gerais and I started this blog to log some experiments and researches I am doing. It works more as a catalog of projects and tutorials that I do to help some friends into those subjects but I would love to get some [feedback](mailto://matheusbarcelosoliveira@gmail.com) on the material. 
+I am Matheus Barcelos de Oliveira, a Brazilian 🇧🇷 Computer Engineer from Minas Gerais. I started this blog to log some experiments and researches I am doing. It works more as a catalog of projects and tutorials that I do to help some friends into those subjects but I would love to get some [feedback](mailto://matheusbarcelosoliveira@gmail.com) on the material.
 
 Hope you find the posts useful!
-
-Matheus Barcelos de Oliveira
 
 # Experience
 
@@ -68,15 +66,13 @@ Learning models for industrial applications;
 
 # Education
 
-### 2014/2015 - Bachelor in Computer Engineering (Exchange) - [IUPUI](https://www.iupui.edu/)
-
 ### 2011/2017 - Bachelor in Computer Engineering - [CEFET-MG](http://www.decom.cefetmg.br/)
 
-# Publications
-
-MSc Pedro Henrique Caetano de Pádua, Ph.D. Flávio Luis Cardeal Pádua, Ph.D. Marconi Arruda Pereira, Marco T. D. Sousa, Matheus Barcelos Oliveira, Ph.D. Elizabeth Fialho Wanner, [“A Vision-Based System to Support Tactical and Physical Analyses in Futsal”](https://link.springer.com/article/10.1007/s00138-017-0849-z) in Machine Vision and Applications, vol. 28, pp. 475-496, Springer, 2017.
+### 2014/2015 - Bachelor in Computer Engineering (Exchange) - [IUPUI](https://www.iupui.edu/)
 
 # Projects
+
+[Image grouping tools](https://github.com/mathbarc/image-grouping-tools) - Python package for large dataset analysis and visualization. Available on [PyPI](https://pypi.org/project/image-grouping-tool/)
 
 [Multiview Futtracker](https://github.com/mathbarc/multiview-futtracker) - Software for trackking soccer players in real time with multiple camera views.
 
@@ -93,4 +89,8 @@ MSc Pedro Henrique Caetano de Pádua, Ph.D. Flávio Luis Cardeal Pádua, Ph.D. M
 [MLOps with MLFlow](https://github.com/mathbarc/mlops_with_mlflow) - Project for showcasing usage of MLOps tools.
 
 [Parallel BGS](https://github.com/mathbarc/parallel-bgs) - Implementation of Background Subtration algorithm using CUDA library.
+
+# Publications
+
+MSc Pedro Henrique Caetano de Pádua, Ph.D. Flávio Luis Cardeal Pádua, Ph.D. Marconi Arruda Pereira, Marco T. D. Sousa, Matheus Barcelos Oliveira, Ph.D. Elizabeth Fialho Wanner, [“A Vision-Based System to Support Tactical and Physical Analyses in Futsal”](https://link.springer.com/article/10.1007/s00138-017-0849-z) in Machine Vision and Applications, vol. 28, pp. 475-496, Springer, 2017.
 
